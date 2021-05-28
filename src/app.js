@@ -12,7 +12,7 @@ mongoose.connect('mongodb+srv://Platzi-admin:46527241@platzicurso.d20mq.mongodb.
     .catch(err => console.log(err))
 
 //importing routes
-const indexRoutes = require('./routes/index')
+// const indexRoutes = require('./routes/index')
 
 //settings
 app.set('port', process.env.PORT || 3000)
