@@ -2,17 +2,19 @@ const path = require('path')
 const express = require('express');
 const morgan = require('morgan')
 const mongoose = require('mongoose')
+const http = require('http')
 
 const app = express();
+const server = http.createServer(app)
+
 
 //connecting to db
-mongoose.connect('mongodb+srv://Platzi-admin:46527241@platzicurso.d20mq.mongodb.net/NodeJS-MongoDB-CRUD')
+mongoose.connect('mongodb+srv://Platzi-admin:46527241@platzicurso.d20mq.mongodb.net/NodeJS-MongoDB-CRUD?retryWrites=true&w=majority')
     .then(db => console.log('db ok'))
-    .then(app.use('/', require('./routes/index')))
     .catch(err => console.log(err))
 
 //importing routes
-// const indexRoutes = require('./routes/index')
+const indexRoutes = require('./routes/index')
 
 //settings
 app.set('port', process.env.PORT || 3000)
@@ -24,6 +26,7 @@ app.use(morgan('dev')); //Activar morgan con script "dev"
 app.use(express.urlencoded({extended: false})) //entiende formularios HTML
 
 //routes
+app.use('/', indexRoutes)
 
 //starting the server
 app.listen(app.get('port'), () => {
