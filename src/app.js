@@ -8,6 +8,7 @@ const app = express();
 //connecting to db
 mongoose.connect('mongodb+srv://Platzi-admin:46527241@platzicurso.d20mq.mongodb.net/NodeJS-MongoDB-CRUD')
     .then(db => console.log('db ok'))
+    .then(app.use('/', indexRoutes))
     .catch(err => console.log(err))
 
 //importing routes
@@ -23,7 +24,6 @@ app.use(morgan('dev')); //Activar morgan con script "dev"
 app.use(express.urlencoded({extended: false})) //entiende formularios HTML
 
 //routes
-app.use('/', indexRoutes);
 
 //starting the server
 app.listen(app.get('port'), () => {

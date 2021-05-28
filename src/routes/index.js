@@ -4,11 +4,15 @@ const router = express.Router();
 const Task = require('../models/task')
 
 router.get('/', async (req, res) => {
-    const tasks = await Task.find(); // carga todo el contenido de la colección exportada en task.js
+    try{
+        const tasks = await Task.find(); // carga todo el contenido de la colección exportada en task.js
     console.log(tasks);
     res.render('index', {
       tasks // renderiza index pasando tasks como parametro
-    });
+    });}
+    catch{
+        console.log("error")
+    }
 })
 
 router.post('/add', async (req, res) => {
