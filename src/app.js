@@ -8,7 +8,7 @@ const app = express();
 //connecting to db
 mongoose.connect('mongodb+srv://Platzi-admin:46527241@platzicurso.d20mq.mongodb.net/NodeJS-MongoDB-CRUD')
     .then(db => console.log('db ok'))
-    .then(app.use('/', indexRoutes))
+    .then(app.use('/', require('./routes/index')))
     .catch(err => console.log(err))
 
 //importing routes
