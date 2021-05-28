@@ -2,11 +2,8 @@ const path = require('path')
 const express = require('express');
 const morgan = require('morgan')
 const mongoose = require('mongoose')
-const http = require('http')
 
 const app = express();
-const server = http.createServer(app)
-
 
 //connecting to db
 mongoose.connect('mongodb+srv://Platzi-admin:46527241@platzicurso.d20mq.mongodb.net/NodeJS-MongoDB-CRUD?retryWrites=true&w=majority')
